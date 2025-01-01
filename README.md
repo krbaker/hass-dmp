@@ -27,6 +27,31 @@ Additionally the integration provides a consolidated status sensor that provides
 ## Setup Instructions
 This integration implements a Home Assistant configuration flow to simplify setup. To install, simply checkout this repo and copy `<REPO>/custom_components/dmp` to `<HASS INSTALL>/config/custom_components/dmp` and restart Home Assistant. Once installed the integration can be added from the control panel by searching for DMP.
 
+* You will need some data from your panel and certain settings configured.  Most of this information should be obtainable from your installer and should not require a site visit.
+* You may alsobe able to obtain/configure some of this yourself [detailed programming guide](https://www.dmp.com/assets/LT-0196.pdf)
+* Get into programming mode (only possible if no lockout code is set -or- you know the lockout code)
+* Open you panel, jumper the 'reset' pins for ~2 seconds (this appears to just reboot the panel, not sure if longer might clear memory or something so be careful)
+* On the first control pad enter 6653 (PROG) and press command, the system should display 'PROGRAMMER'
+* Scroll through options with 'CMD' and select them with the top left soft key (<-- Goes back too)
+* Scroll and find 'Communications', hit the soft key
+* This is where my 'Account ID' was but you might need to scroll (write this down)
+* We now need to configure either Entre or Integrator remote access ports.  Either should be okay if one is in use.  Just pick one and do all config on one.
+* Find the 'Remote Options' Menu (scroll through the top level with 'CMD', press top soft key when you find it)
+* Scroll again until you find 'Entre' or 'Integrator' and it hopefully says "None" - use the soft key to change.
+* Select "Net"
+* IPv6 No
+* Write down the incoming port
+* Enter the IPof your home assistant (I think this reduces security risk a bit - not much)
+* Write down your outbound port
+* No backup
+* Enable all reports (default)
+* No video (default)
+* 0 min  checkin
+* no passphrase (this might be usabe, but not using it yet myself)
+* cycle till you get to zine info, iterate through your zones, copy down each device if you don't have it
+* while there enable real-time status updates for each device (this option is deep in, you have say 'no' to the next zone option)
+* find the EXIT item, select, system will save and exit programmer mode
+
 ## Planned Updates
 * Additional zone type support
 * Custom bypass arming
